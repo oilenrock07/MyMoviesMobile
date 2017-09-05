@@ -9,7 +9,7 @@ import { AppService } from '../../providers/appservice';
 })
 export class HomePage {
   appService: any;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, appservice: AppService) {
     this.appService = appservice;
   }

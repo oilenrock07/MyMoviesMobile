@@ -24,11 +24,11 @@ export class MyApp {
       this.initializeApp();
 
       this.menus = [
-        { title: 'Home', component: HomePage },
-        { title: 'Category1', component: HomePage },
-        { title: 'About', component: HomePage },
-        { title: 'Settings', component: HomePage },
-        { title: 'Exit', component: HomePage }
+        { title: 'Horror', component: HomePage },
+        { title: 'Comedy', component: HomePage },
+        { title: 'Action', component: HomePage },
+        { title: 'Drama', component: HomePage },
+        { title: 'Thriller', component: HomePage }
       ];
   }
 

@@ -4,7 +4,9 @@ import { SearchPage } from '../pages/search/search';
 @Injectable()
 export class AppService {
 
+    constructor() {}
+
     searchToggle() {
-        //this.navCtrl.push(SearchPage);
+
     }
 }
