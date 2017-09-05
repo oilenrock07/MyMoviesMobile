@@ -22,14 +22,8 @@
       <ion-slide>
         <ion-grid>
           <ion-row>
-            <ion-col>
-              <img src="../../assets/images.jpg">
-            </ion-col>
-            <ion-col>
-              <img src="../../assets/images.jpg">
-            </ion-col>
-            <ion-col>
-              <img src="../../assets/images.jpg">
+            <ion-col *ngFor="let m of movies">
+              <img src="../../assets/images.jpg" title="{{m.MovieName}}">
             </ion-col>
           </ion-row>
         </ion-grid>
