@@ -4,6 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AppService } from '../providers/appservice';
+import { SlideService } from '../providers/slideservice';
+import { MovieService } from '../providers/movieservice';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
@@ -28,6 +31,8 @@ import { SearchPage } from '../pages/search/search';
     StatusBar,
     SplashScreen,
     AppService,
+    MovieService,
+    SlideService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

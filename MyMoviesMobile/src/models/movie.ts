@@ -1,10 +1,5 @@
 export class Movie {
-    MovieName:string;
-    ImdbId:string;
-    Poster:string;
+    constructor(public MovieId:number,public ImdbId: string, public MovieName: string, public Poster: string) {
 
-    constructor(fields?: {MovieName?: string, ImdbId?: string, Poster?: string}) {
-        if (fields)
-            Object.assign(this, fields);
     }
 }
