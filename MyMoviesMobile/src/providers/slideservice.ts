@@ -12,20 +12,20 @@ export class SlideService {
         
     }
 
-    getNewSlides(lastMovieId: number) : Promise<Array<Slide[]>> {
+    getNewSlides(lastMovieId: number) : Promise<Slide[]> {
         return this.moviesService.loadNewMovies(lastMovieId).then((movies) => {
             var ctr : number = 3;
             var index : number = -1;
 
-            var slideList = [];
+            var slideList : Array<Slide> = [];
 
             for(let movie of movies) {
                 if ((ctr % 3) == 0) {                    
-                    slideList.push(new Array<Slide>());  
+                    slideList.push(new Slide());  
                     index++;                  
                 }
 
-                slideList[index].push(movie);
+                slideList[index].Movies.push(movie);
                 ctr++;
             }
 

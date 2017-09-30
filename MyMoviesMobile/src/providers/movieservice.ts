@@ -13,11 +13,16 @@ export class MovieService {
         this.movies.push(new Movie(3, "1234", "Spider Man 3",  ""));
         this.movies.push(new Movie(4, "4321", "Spider Man 4",  ""));
         this.movies.push(new Movie(5, "9987", "Spider Man 5",  ""));
+        this.movies.push(new Movie(6,"1234", "Spider Man 6",  ""));
+        this.movies.push(new Movie(7, "1234", "Spider Man 7",""));
+        this.movies.push(new Movie(8, "1234", "Spider Man 8",  ""));
+        this.movies.push(new Movie(9, "4321", "Spider Man 9",  ""));
+        this.movies.push(new Movie(10, "9987", "Spider Man 10",  ""));
     }
 
     loadNewMovies(lastMovieId: number) : Promise<Movie[]> {
         return new Promise(resolve => {        
-            resolve(this.movies.slice(lastMovieId, 4));
+            resolve(this.movies.slice(lastMovieId, lastMovieId + 6));
         });
     }
 }
