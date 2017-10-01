@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AppService } from '../providers/appservice';
 import { SlideService } from '../providers/slideservice';
 import { MovieService } from '../providers/movieservice';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -30,6 +31,7 @@ import { SearchPage } from '../pages/search/search';
   providers: [
     StatusBar,
     SplashScreen,
+    SQLite,
     AppService,
     MovieService,
     SlideService,
