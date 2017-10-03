@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
+import { DataService } from '../providers/dataservice';
 import { HomePage } from '../pages/home/home';
 
 @Component({
@@ -21,7 +21,7 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private sqlite: SQLite) {
+    public dataService: DataService) {
 
       this.initializeApp();
 
@@ -39,21 +39,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
-
-
-      window['sqlitePlugin'].openDatabase({name: 'mymovies.db', location: 'default', createFromLocation: 1}, function(db) {
-        db.transaction(function(tx) {
-          db.executeSql("SELECT * FROM Movies WHERE MovieId=232", [], function (resultSet) {
-            alert(JSON.stringify(resultSet.rows.item(0)));
-            //console.log('got stringlength: ' + resultSet.rows.item(0).stringlength);
-          }, function(error) {
-            alert('SELECT error: ' + error.message);
-          });
-        }, function(err) {
-          alert('Open database ERROR: ' + JSON.stringify(err));
-        });
-      });
+      this.splashScreen.hide();  
     });
   }
 

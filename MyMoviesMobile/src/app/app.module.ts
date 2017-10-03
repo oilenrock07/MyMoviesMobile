@@ -3,24 +3,31 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicImageLoader } from 'ionic-image-loader';
+
 import { AppService } from '../providers/appservice';
 import { SlideService } from '../providers/slideservice';
 import { MovieService } from '../providers/movieservice';
-import { SQLite } from '@ionic-native/sqlite';
+import { DataService } from '../providers/dataservice';
+import { SettingService } from '../providers/settingservice';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
 
+import { ImageComponent } from '../components/imagecomponent';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SearchPage
+    SearchPage,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageLoader.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,10 +38,11 @@ import { SearchPage } from '../pages/search/search';
   providers: [
     StatusBar,
     SplashScreen,
-    SQLite,
     AppService,
     MovieService,
+    DataService,
     SlideService,
+    SettingService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

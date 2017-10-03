@@ -15,15 +15,14 @@
 
 <ion-content padding>
 
-
   <div class="home-slider">
     <h3>New</h3>
-    <ion-slides (ionSlideReachEnd)="reachLastSlide('new')">
+    <ion-slides (ionSlideReachEnd)="reachLastSlide('new')" >
       <ion-slide *ngFor="let slide of newSlides">
         <ion-grid>
           <ion-row>
-            <ion-col col-4 *ngFor="let movie of slide.Movies">
-              <img src="content://com.lychee.mymovies/main_expansion/images.jpg" title="{{movie.MovieName}}">
+            <ion-col col-4 *ngFor="let movie of slide.Movies">              
+                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}"></img-loader>                
             </ion-col>
           </ion-row>
         </ion-grid>
