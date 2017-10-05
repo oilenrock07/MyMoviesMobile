@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { MovieService } from './movieservice';
+import { MovieMockService } from './moviemockservice';
+import { AppService } from './appservice';
 import { Slide } from '../models/slide';
+
+
+import { IMovieService } from '../interfaces/imovieservice'
 
 @Injectable()
 export class SlideService {
 
+    private readonly _movieService : IMovieService;
     slides : any[] = [];
-    slidesReturnCount :number = 10;
-
-    constructor(private moviesService: MovieService) {
-        
+    
+    constructor(private moviesService: MovieService, private movieMockService: MovieMockService, private appService: AppService) {
+        this._movieService = appService.isApp ? moviesService :  movieMockService;        
     }
 
     getNewSlides(lastMovieId: number) : Promise<Slide[]> {
-        return this.moviesService.loadNewMovies(lastMovieId).then((movies) => {
+        return this._movieService.loadNewMovies(lastMovieId).then((movies) => {
             var ctr : number = 3;
             var index : number = -1;
 

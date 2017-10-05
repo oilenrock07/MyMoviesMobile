@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
-import { SearchPage } from '../pages/search/search';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class AppService {
+    public isApp: boolean = false;
 
-    constructor() {}
+    constructor(private platform: Platform) {
+        if(this.platform.is('core') || this.platform.is('mobileweb')) {
+            this.isApp = false;
+          } else {
+            this.isApp = true;
+          }
+    }
 
     searchToggle() {
 

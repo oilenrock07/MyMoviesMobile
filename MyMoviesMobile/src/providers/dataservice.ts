@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AppService } from './appservice';
 
 @Injectable()
 export class DataService {
@@ -6,9 +7,15 @@ export class DataService {
     db: any;
     isConnected: boolean = false;
 
-    connect(): Promise<any> {
+    constructor (private appService: AppService) {
+
+    }
+
+    connect(): Promise<any> {       
         var self = this;
         return new Promise((resolve, reject) => {
+            if (this.isConnected) return;
+            if (!this.appService.isApp) resolve();
             window['sqlitePlugin'].openDatabase(
                 {
                     name: 'mymovies.db',
