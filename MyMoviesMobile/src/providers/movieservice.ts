@@ -12,9 +12,11 @@ export class MovieService implements IMovieService {
     constructor(public dataService: DataService, public settingService: SettingService) {
     }
 
-    loadNewMovies(lastMovieId: number): Promise<Movie[]> {
-        var query = "SELECT * FROM Movies WHERE MovieId > ? LIMIT ?";
-        return this.dataService.executeSql(query, [lastMovieId, this.settingService.MaximumMovieRequest])
+    loadNewMovies(page: number): Promise<Movie[]> {
+        var max = this.settingService.MaximumMovieRequest;
+        var offset = page * max;
+        var query = "SELECT * FROM Movies WHERE MovieId ORDER BY MovieId DESC LIMIT ? OFFSET ?";
+        return this.dataService.executeSql(query, [max, offset])
             .then(resultSet => this.mapMovie(resultSet));
     }
 

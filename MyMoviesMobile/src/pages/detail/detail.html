@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>MyMovies</ion-title>
+
+        <ion-buttons end>
+            <button (click)="searchToggle()" class="nav-search">
+            <ion-icon name="search" class="nav-search"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row wrap>
+            <ion-col col-12 col-sm-6 class="container">
+                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" backgroundSize="cover"></img-loader>
+            </ion-col>
+            <ion-col col-12 col-sm-6>
+                <div class="title">{{movie.Title}}</div>
+                <div class="year-and-rating">{{yearAndRating(movie)}}</div>
+                <mov-star-rating rate="{{movie.Rate}}"></mov-star-rating>
+                <div class="sumary">{{movie.Summary}}</div>                
+                
+                <div class="stars">Stars: {{movie.formatText(movie.Stars)}}</div>
+                <div class="directors" *ngIf="movie.Directors != ''">Directors: {{movie.formatText(movie.Directors)}}</div>
+                <div class="writers" *ngIf="movie.Writers != ''">Writers: {{movie.formatText(movie.Writers)}}</div>
+                <div class="spacer"></div>
+
+                <div class="country" *ngIf="movie.Country != ''">Country: {{movie.Country}}</div>
+                <div class="language" *ngIf="movie.Language != ''">Language: {{movie.Language}}</div>
+                <div class="aka" *ngIf="movie.AlsoKnownAs != ''">Also Known As: {{movie.AlsoKnownAs}}</div>
+                <div class="budget" *ngIf="movie.Budget != ''">Budget: {{movie.Budget}}</div>
+                <div class="gross" *ngIf="movie.Gross != ''">Budget: {{movie.Gross}}</div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

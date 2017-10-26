@@ -15,19 +15,18 @@
 
 <ion-content padding>
 
-  <div class="home-slider">
+  <div class="home home-slider">
     <h3>New</h3>
-    <ion-slides (ionSlideReachEnd)="reachLastSlide('new')" >
+    <ion-slides (ionSlideReachEnd)="reachLastSlide('new')">
       <ion-slide *ngFor="let slide of newSlides">
         <ion-grid>
           <ion-row>
-            <ion-col col-4 *ngFor="let movie of slide.Movies">              
-                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}"></img-loader>                
+            <ion-col col-4 *ngFor="let movie of slide.Movies" (tap)="selectMovie(movie)">
+                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" height="150px" backgroundSize="{{imageBgSize}}"></img-loader>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-slide>
     </ion-slides>
-
   </div>
 </ion-content>

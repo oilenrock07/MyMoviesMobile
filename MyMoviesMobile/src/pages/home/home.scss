@@ -1,11 +1,12 @@
-page-home {
-
-}
-.home-slider ion-grid {
-    padding:0px;
-}
-
-.home-slider ion-col {
-    height: 250px;
-    padding-left:0px;
-}
+/* Portrait */
+@media screen and (orientation:portrait) {
+    .home img-loader {
+        height:150px !important;
+    }
+ }
+ /* Landscape */
+ @media screen and (orientation:landscape) {
+    .home img-loader {
+        height:250px !important;
+    }
+ }

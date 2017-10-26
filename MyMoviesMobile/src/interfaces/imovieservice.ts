@@ -1,5 +1,5 @@
 import { Movie } from '.././models/movie';
 
 export interface IMovieService {
-    loadNewMovies(lastMovieId: number): Promise<Movie[]>;
+    loadNewMovies(page: number): Promise<Movie[]>;
 }

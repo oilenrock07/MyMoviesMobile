@@ -15,17 +15,21 @@ import { MovieMockService } from '../providers/moviemockservice';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
+import { DetailPage } from '../pages/detail/detail';
 
 import { IMovieService } from '../interfaces/imovieservice'
 
-import { ImageComponent } from '../components/imagecomponent';
+import { StarRating } from '../components/starrating';
+import { RatingPipe } from '../pipes/ratingpipe';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     SearchPage,
-    ImageComponent
+    DetailPage,
+    StarRating,
+    RatingPipe
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { ImageComponent } from '../components/imagecomponent';
   entryComponents: [
     MyApp,
     HomePage,
-    SearchPage
+    SearchPage,
+    DetailPage
   ],
   providers: [
     StatusBar,

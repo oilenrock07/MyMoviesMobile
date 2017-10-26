@@ -1,6 +1,4 @@
 export class Movie {
-    //private posterPath = '../../assets/'; //'content://com.lychee.mymovies/main_expansion/';
-
     public MovieId: number;
     public Poster: string;
     public Title:string;
@@ -51,8 +49,22 @@ export class Movie {
         Location: string,
         Remarks: string,
         FileName: string,
-        FileSize: string }) {
+        FileSize: string }, posterPath ?: string) {
         if (fields) Object.assign(this, fields);
-        this.Poster = 'content://com.lychee.mymovies/main_expansion/' + fields.ImdbId + ".jpg";
+
+        if (posterPath == undefined)
+            posterPath = 'content://com.lychee.mymovies/main_expansion/';
+        this.Poster = posterPath + fields.ImdbId + ".jpg";
+    }
+
+    formatText(field: string) : string {
+        if (field != undefined) {
+            if (field.indexOf(',') > 0)
+                return field.replace(new RegExp(',', 'g'), ', ');
+
+            return field;
+        }
+
+        return '';
     }
 }

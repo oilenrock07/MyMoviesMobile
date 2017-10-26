@@ -17,8 +17,8 @@ export class SlideService {
         this._movieService = appService.isApp ? moviesService :  movieMockService;        
     }
 
-    getNewSlides(lastMovieId: number) : Promise<Slide[]> {
-        return this._movieService.loadNewMovies(lastMovieId).then((movies) => {
+    getNewSlides(page: number) : Promise<Slide[]> {
+        return this._movieService.loadNewMovies(page).then((movies) => {
             var ctr : number = 3;
             var index : number = -1;
 
