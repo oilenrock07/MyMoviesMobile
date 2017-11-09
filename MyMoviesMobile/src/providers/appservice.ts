@@ -12,8 +12,4 @@ export class AppService {
             this.isApp = true;
           }
     }
-
-    searchToggle() {
-
-    }
 }

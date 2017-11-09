@@ -23,13 +23,15 @@ export class MovieService implements IMovieService {
     loadRelatedMovies(imdbIds: string): Promise<Movie[]> {
         var query = "SELECT * FROM Movies WHERE ImdbId IN (?)";
         return this.dataService.executeSql(query, [imdbIds])
-        .then(resultSet => this.mapMovie(resultSet));
+            .then(resultSet => this.mapMovie(resultSet));
     }
 
-    isMovieExistsOnWatchList(movieId: number) : Promise<boolean> {
-        var query = "SELECT 1 FROM WatchList WHERE MovieId = ?";
-        return this.dataService.executeSql(query, movieId)
-            .then(resultSet => resultSet.length > 0);
+    searchMovies(criteria: string): Promise<Movie[]> {
+        var query = "SELECT * FROM Movies WHERE Title LIKE '%?%' OR Directors LIKE '%?%' OR Writers LIKE '%?%' OR Stars LIKE '%?%' OR Genre LIKE '%?%'" +
+            "OR AlsoKnownAs LIKE '%?%' OR FileName LIKE '%?%'";
+
+        return this.dataService.executeSql(query, [criteria, criteria, criteria, criteria, criteria, criteria, criteria])
+            .then(resultSet => this.mapMovie(resultSet));
     }
 
     // addToWatchList(movieId: number) : Promise {

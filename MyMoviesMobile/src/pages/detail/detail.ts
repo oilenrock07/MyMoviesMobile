@@ -7,6 +7,7 @@ import { SlideService } from '../../providers/slideservice';
 import { StarRating } from '../../components/starrating';
 import { IonicImageLoader } from 'ionic-image-loader';
 
+import { SearchPage } from '../search/search';
 import { MovieBasePage } from '../base/moviebasepage';
 
 @Component({
@@ -26,6 +27,10 @@ export class DetailPage extends MovieBasePage {
 
     selectMovie(movie: Movie) {
         this.navCtrl.push(DetailPage, { mov: movie });
+    }
+
+    searchToggle() {
+        this.navCtrl.push(SearchPage);
     }
 
     yearAndRating(movie: Movie): string {
