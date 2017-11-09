@@ -20,6 +20,23 @@ export class MovieService implements IMovieService {
             .then(resultSet => this.mapMovie(resultSet));
     }
 
+    loadRelatedMovies(imdbIds: string): Promise<Movie[]> {
+        var query = "SELECT * FROM Movies WHERE ImdbId IN (?)";
+        return this.dataService.executeSql(query, [imdbIds])
+        .then(resultSet => this.mapMovie(resultSet));
+    }
+
+    isMovieExistsOnWatchList(movieId: number) : Promise<boolean> {
+        var query = "SELECT 1 FROM WatchList WHERE MovieId = ?";
+        return this.dataService.executeSql(query, movieId)
+            .then(resultSet => resultSet.length > 0);
+    }
+
+    // addToWatchList(movieId: number) : Promise {
+    //     var query = "INSERT INTO WatchList WHERE MovieId"
+    //     return this.dataService.executeSql()
+    // }
+
     private mapMovie(moviesObj: any): Array<Movie> {
         var movieList: Array<Movie> = [];
         try {

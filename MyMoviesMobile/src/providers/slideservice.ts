@@ -10,35 +10,47 @@ import { IMovieService } from '../interfaces/imovieservice'
 @Injectable()
 export class SlideService {
 
-    private readonly _movieService : IMovieService;
-    slides : any[] = [];
-    
+    private readonly _movieService: IMovieService;
+    slides: any[] = [];
+
     constructor(private moviesService: MovieService, private movieMockService: MovieMockService, private appService: AppService) {
-        this._movieService = appService.isApp ? moviesService :  movieMockService;        
+        this._movieService = appService.isApp ? moviesService : movieMockService;
     }
 
-    getNewSlides(page: number) : Promise<Slide[]> {
+    getNewSlides(page: number): Promise<Slide[]> {
         return this._movieService.loadNewMovies(page).then((movies) => {
-            var ctr : number = 3;
-            var index : number = -1;
+            return this.prepareSlide(movies);
+        });
+    }
 
-            var slideList : Array<Slide> = [];
-
-            for(let movie of movies) {
-                if ((ctr % 3) == 0) {                    
-                    slideList.push(new Slide());  
-                    index++;                  
-                }
-
-                slideList[index].Movies.push(movie);
-                ctr++;
-            }
-
-            return slideList;
+    getRelatedMovies(imdbIds: string): Promise<Slide[]> {
+        return this._movieService.loadRelatedMovies(imdbIds).then((movies) => {
+            return this.prepareSlide(movies);
         });
     }
 
     getRandomMovieSlides() {
 
+    }
+
+    //Arrange the movie on each slides.
+    //Display 3 movies on each slide
+    private prepareSlide(movies: any) {
+        var ctr: number = 3;
+        var index: number = -1;
+
+        var slideList: Array<Slide> = [];
+
+        for (let movie of movies) {
+            if ((ctr % 3) == 0) {
+                slideList.push(new Slide());
+                index++;
+            }
+
+            slideList[index].Movies.push(movie);
+            ctr++;
+        }
+
+        return slideList;
     }
 }

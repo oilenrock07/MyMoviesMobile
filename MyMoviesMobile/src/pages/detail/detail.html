@@ -24,8 +24,8 @@
                 <div class="title">{{movie.Title}}</div>
                 <div class="year-and-rating">{{yearAndRating(movie)}}</div>
                 <mov-star-rating rate="{{movie.Rate}}"></mov-star-rating>
-                <div class="sumary">{{movie.Summary}}</div>                
-                
+                <div class="sumary">{{movie.Summary}}</div>
+
                 <div class="stars">Stars: {{movie.formatText(movie.Stars)}}</div>
                 <div class="directors" *ngIf="movie.Directors != ''">Directors: {{movie.formatText(movie.Directors)}}</div>
                 <div class="writers" *ngIf="movie.Writers != ''">Writers: {{movie.formatText(movie.Writers)}}</div>
@@ -35,8 +35,28 @@
                 <div class="language" *ngIf="movie.Language != ''">Language: {{movie.Language}}</div>
                 <div class="aka" *ngIf="movie.AlsoKnownAs != ''">Also Known As: {{movie.AlsoKnownAs}}</div>
                 <div class="budget" *ngIf="movie.Budget != ''">Budget: {{movie.Budget}}</div>
-                <div class="gross" *ngIf="movie.Gross != ''">Budget: {{movie.Gross}}</div>
+                <div class="gross" *ngIf="movie.Gross != ''">Gross: {{movie.Gross}}</div>
+                <div class="spacer"></div>
+
+                <div class="datecreated" *ngIf="movie.DateCreated != ''">Date Created: {{movie.DateCreated}}</div>
+                <div class="location" *ngIf="movie.Location != ''">Location: {{movie.Location}}</div>
+                <div class="remarks" *ngIf="movie.Remarks != ''">Remarks: {{movie.Remarks}}</div>
+                <div class="filename" *ngIf="movie.FileName != ''">File Name: {{movie.FileName}}</div>
+                <div class="filesize" *ngIf="movie.FileSize != ''">File Size: {{movie.FileSize}}</div>
             </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-slides>
+                <ion-slide *ngFor="let slide of relatedMovieSlides">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-4 *ngFor="let movie of slide.Movies" (tap)="selectMovie(movie)" (press)="addToWatchList(movie)">
+                                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" height="150px" backgroundSize="{{imageBgSize}}"></img-loader>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-slide>
+            </ion-slides>
         </ion-row>
     </ion-grid>
 </ion-content>
