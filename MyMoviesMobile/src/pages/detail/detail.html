@@ -22,8 +22,10 @@
             </ion-col>
             <ion-col col-12 col-sm-6>
                 <div class="title">{{movie.Title}}</div>
+                <div class="genre">{{movie.formatText(movie.Genre)}}</div>
                 <div class="year-and-rating">{{yearAndRating(movie)}}</div>
-                <mov-star-rating rate="{{movie.Rate}}"></mov-star-rating>
+                <mov-star-rating rate="{{movie.Rate}}" *ngIf="showStarRating" (tap)="showStarRating=!showStarRating"></mov-star-rating>
+                <div class="rate" *ngIf="!showStarRating" (tap)="showStarRating=!showStarRating">{{movie.Rate}}</div>
                 <div class="sumary">{{movie.Summary}}</div>
 
                 <div class="stars">Stars: {{movie.formatText(movie.Stars)}}</div>
@@ -46,6 +48,7 @@
             </ion-col>
         </ion-row>
         <ion-row>
+            <div class="title" *ngIf="relatedMovieSlides.length > 0">Related Movies</div>
             <ion-slides>
                 <ion-slide *ngFor="let slide of relatedMovieSlides">
                     <ion-grid>

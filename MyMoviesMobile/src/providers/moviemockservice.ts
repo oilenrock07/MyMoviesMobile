@@ -188,6 +188,14 @@ export class MovieMockService implements IMovieService {
         });
     }
 
+    searchMoviesByCategory(criteria: string) : Promise<Movie[]> {
+        return new Promise((resolve, reject) => {
+            var lowerCriteria = criteria.toLowerCase();
+            var result = this.movies.filter(x => x.Genre.toLowerCase().indexOf(lowerCriteria) >= 0);
+            resolve(this.mapMovie(result));
+        });
+    }
+
     private mapMovie(moviesObj: any): Array<Movie> {
         var movieList: Array<Movie> = [];
         try {

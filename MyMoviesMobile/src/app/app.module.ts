@@ -16,11 +16,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
 import { DetailPage } from '../pages/detail/detail';
+import { CategoriesPage } from '../pages/categories/categories';
+import { CategoryPage } from '../pages/category/category';
 
 import { IMovieService } from '../interfaces/imovieservice'
 
 import { StarRating } from '../components/starrating';
 import { RatingPipe } from '../pipes/ratingpipe';
+import { CallbackPipe } from '../pipes/callbackpipe';
 
 @NgModule({
   declarations: [
@@ -28,8 +31,11 @@ import { RatingPipe } from '../pipes/ratingpipe';
     HomePage,
     SearchPage,
     DetailPage,
+    CategoriesPage,
+    CategoryPage,
     StarRating,
-    RatingPipe
+    RatingPipe,
+    CallbackPipe
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import { RatingPipe } from '../pipes/ratingpipe';
     MyApp,
     HomePage,
     SearchPage,
-    DetailPage
+    DetailPage,
+    CategoriesPage,
+    CategoryPage
   ],
   providers: [
     StatusBar,

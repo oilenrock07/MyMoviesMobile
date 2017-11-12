@@ -8,12 +8,10 @@
 
     <ion-content>
         <ion-list class="list">
-            <ion-item-divider>Categories</ion-item-divider>
-            <button ion-item *ngFor="let p of menus" (click)="openPage(p)">{{p.title}}</button>
             <ion-item-divider>Options</ion-item-divider>
-            <button ion-item>Settings</button>
-            <button ion-item>About</button>
-            <button ion-item>Exit</button>
+            <button ion-item *ngFor="let p of menus | callback: filterMenu: false" (click)="openPage(p)">{{p.title}}</button>
+            <ion-item-divider>System</ion-item-divider>
+            <button ion-item *ngFor="let p of menus | callback: filterMenu: true" (click)="openPage(p)">{{p.title}}</button>
         </ion-list>
     </ion-content>
 

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title>MyMovies</ion-title>
+
+        <ion-buttons end>
+            <button (click)="searchToggle()" class="nav-search">
+          <ion-icon name="search" class="nav-search"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 *ngFor="let movie of searchResult" (tap)="selectMovie(movie)" (press)="addToWatchList(movie)">
+                <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" height="150px" backgroundSize="{{imageBgSize}}"></img-loader>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

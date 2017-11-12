@@ -17,7 +17,7 @@ export class RatingPipe implements PipeTransform {
         var rating: number = Number(value);
         var roundedRate: number = Math.round(rating);
         if (roundedRate > 0 && this.strRate.length == 0) {
-            var found : boolean = false;
+            var found: boolean = false;
 
             for (var i = 5; i > 0; i--) {
                 var num = i * 2;
@@ -29,7 +29,12 @@ export class RatingPipe implements PipeTransform {
                     found = true;
                 }
                 else {
-                    this.strRate = '<ion-icon class="ion-ios-star-outline"></ion-icon>' + this.strRate;
+                    if (!found && roundedRate == num - 1) {
+                        this.strRate = '<ion-icon class="ion-ios-star-half"></ion-icon>' + this.strRate;
+                        found = true;
+                    }
+                    else
+                        this.strRate = '<ion-icon class="ion-ios-star-outline"></ion-icon>' + this.strRate;
                 }
             }
         }
