@@ -34,6 +34,10 @@ export class MovieService implements IMovieService {
             .then(resultSet => this.mapMovie(resultSet));
     }
 
+    searchMoviesByCategory(criteria: string) : Promise<Movie[]> {
+        return null;
+    }
+
     // addToWatchList(movieId: number) : Promise {
     //     var query = "INSERT INTO WatchList WHERE MovieId"
     //     return this.dataService.executeSql()

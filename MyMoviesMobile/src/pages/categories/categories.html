@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title>MyMovies</ion-title>
+
+        <ion-buttons end>
+            <button (click)="searchToggle()" class="nav-search">
+          <ion-icon name="search" class="nav-search"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-background-page">
+        <ion-card (tap)="selectCategory('adventure')">
+            <img src="assets/categories/adventure.jpg" />
+            <div class="card-title">Adventure</div>
+            <div class="card-subtitle">41 Listings</div>
+        </ion-card>
+
+        <ion-card (tap)="selectCategory('action')">
+            <img src="assets/categories/action.jpg" />
+            <div class="card-title">Action</div>
+            <div class="card-subtitle">41 Listings</div>
+        </ion-card>
+
+        <ion-card (tap)="selectCategory('drama')">
+            <img src="assets/categories/drama.jpg" />
+            <div class="card-title color-red">Drama</div>
+            <div class="card-subtitle color-red">41 Listings</div>
+        </ion-card>
+
+        <ion-card (tap)="selectCategory('horror')">
+            <img src="assets/categories/horror.jpg" />
+            <div class="card-title">Horror</div>
+            <div class="card-subtitle">41 Listings</div>
+        </ion-card>
+
+        <ion-card (tap)="selectCategory('mystery')">
+            <img src="assets/categories/mystery.jpg" />
+            <div class="card-title">Mystery</div>
+            <div class="card-subtitle">41 Listings</div>
+        </ion-card>
+
+        <ion-card (tap)="selectCategory('romance')">
+            <img src="assets/categories/romance.jpg" />
+            <div class="card-title dark">Romance</div>
+            <div class="card-subtitle dark">41 Listings</div>
+        </ion-card>
+</ion-content>

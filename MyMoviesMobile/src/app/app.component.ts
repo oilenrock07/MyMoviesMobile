@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { DataService } from '../providers/dataservice';
 import { HomePage } from '../pages/home/home';
+import { CategoriesPage } from '../pages/categories/categories';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,24 +15,25 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = HomePage;
-  menus: Array<{title: string, component:any}>;
+  rootPage: any = HomePage;
+  menus: Array<{ title: string, component: any, system: boolean }>;
 
-  constructor(public platform: Platform, 
+  constructor(public platform: Platform,
     public menu: MenuController,
-    public statusBar: StatusBar, 
+    public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public dataService: DataService) {
 
-      this.initializeApp();
+    this.initializeApp();
 
-      this.menus = [
-        { title: 'Horror', component: HomePage },
-        { title: 'Comedy', component: HomePage },
-        { title: 'Action', component: HomePage },
-        { title: 'Drama', component: HomePage },
-        { title: 'Thriller', component: HomePage }
-      ];
+    this.menus = [
+      { title: 'Home', component: HomePage, system: false },
+      { title: 'Categories', component: CategoriesPage, system: false },
+      { title: 'Watchlist', component: HomePage, system: false },
+      { title: 'Data Updates', component: HomePage, system: true },
+      { title: 'Settings', component: HomePage, system: true },
+      { title: 'About', component: HomePage, system: true }
+    ];
   }
 
   initializeApp() {
@@ -39,7 +41,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();  
+      this.splashScreen.hide();
     });
   }
 
@@ -48,6 +50,10 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  filterMenu(menu: { title: string, component: any, system: boolean }, value: boolean) {
+    return menu.system == value;
   }
 }
 
