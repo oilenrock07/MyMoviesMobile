@@ -41,8 +41,8 @@ export class DetailPage extends MovieBasePage {
     }
 
     private getRelatedMovies() {
-        if (this.movie != null && this.movie.RelatedMovies.length > 0) {
-            this.slideService.getRelatedMovies(this.movie.RelatedMovies).then(result => {
+        if (this.movie != null && this.movie.RelatedMovie && this.movie.RelatedMovie.length > 0) {
+            this.slideService.getRelatedMovies(this.movie.RelatedMovie).then(result => {
                 this.relatedMovieSlides = result;
             });
         }

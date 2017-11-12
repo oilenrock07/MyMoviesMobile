@@ -37,6 +37,7 @@ export class DataService {
             this.db.executeSql(query, param, function (resultSet) {
                 resolve(resultSet);
             }, function (error) {
+                alert(JSON.stringify(error));
                 reject(error);
             });
         });

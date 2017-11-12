@@ -17,6 +17,7 @@ export class SearchPage {
 
   private readonly _movieService: IMovieService;
   searchResult: Movie[] = [];
+  imageBgSize: string = 'contain';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private appService: AppService,
     private moviesService: MovieService, private movieMockService: MovieMockService) {
@@ -30,6 +31,7 @@ export class SearchPage {
       return;
     }
 
+    if (criteria.length < 3) return;
     this._movieService.searchMovies(criteria).then(result => {
       this.searchResult = result;
     });

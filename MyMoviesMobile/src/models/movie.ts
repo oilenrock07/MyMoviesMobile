@@ -13,7 +13,7 @@ export class Movie {
     public Summary: string;
     public Genre: string;
     public Year: string;
-    public RelatedMovies: string;
+    public RelatedMovie: string;
     public Country: string;
     public Language: string;
     public AlsoKnownAs: string;

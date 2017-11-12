@@ -33,7 +33,7 @@ export class HomePage extends MovieBasePage {
 
   initialize() {
     this.platform.ready().then(() => {
-      this.imageBgSize = this.appservice.isApp ? 'cover' : 'contain';
+      //this.imageBgSize = this.appservice.isApp ? 'cover' : 'contain';
       this.dataService.connect().then(db => {
         this.appReady = true;
         this.slideService.getNewSlides(0).then(slides => {

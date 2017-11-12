@@ -21,16 +21,21 @@ export class MovieService implements IMovieService {
     }
 
     loadRelatedMovies(imdbIds: string): Promise<Movie[]> {
-        var query = "SELECT * FROM Movies WHERE ImdbId IN (?)";
-        return this.dataService.executeSql(query, [imdbIds])
+        var formattedParameter = "'" + imdbIds + "'";
+        if (formattedParameter.indexOf(',') > 0)
+        formattedParameter = formattedParameter.replace(new RegExp(',', 'g'), "','");
+
+        var query = "SELECT * FROM Movies WHERE ImdbId IN (" + formattedParameter + ")";
+        return this.dataService.executeSql(query, null)
             .then(resultSet => this.mapMovie(resultSet));
     }
 
     searchMovies(criteria: string): Promise<Movie[]> {
-        var query = "SELECT * FROM Movies WHERE Title LIKE '%?%' OR Directors LIKE '%?%' OR Writers LIKE '%?%' OR Stars LIKE '%?%' OR Genre LIKE '%?%'" +
-            "OR AlsoKnownAs LIKE '%?%' OR FileName LIKE '%?%'";
+        criteria = "'%" + criteria + "%'";
+        var query = `SELECT DISTINCT * FROM Movies WHERE Title LIKE ${criteria} OR Directors LIKE ${criteria} OR Writers LIKE ${criteria} OR Stars LIKE ${criteria} OR Genre LIKE ${criteria} ` +
+            `OR AlsoKnownAs LIKE ${criteria} OR FileName LIKE ${criteria}`;
 
-        return this.dataService.executeSql(query, [criteria, criteria, criteria, criteria, criteria, criteria, criteria])
+        return this.dataService.executeSql(query, [])
             .then(resultSet => this.mapMovie(resultSet));
     }
 
