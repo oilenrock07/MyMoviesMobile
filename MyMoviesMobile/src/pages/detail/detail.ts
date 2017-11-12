@@ -17,6 +17,7 @@ import { MovieBasePage } from '../base/moviebasepage';
 export class DetailPage extends MovieBasePage {
     public movie: Movie;
     imageBgSize: string = 'contain';
+    showStarRating: boolean = true;
     relatedMovieSlides: Slide[] = [];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private slideService: SlideService) {
