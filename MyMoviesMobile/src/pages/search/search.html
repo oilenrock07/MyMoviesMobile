@@ -11,5 +11,9 @@
                 <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" height="150px" backgroundSize="{{imageBgSize}}"></img-loader>
             </ion-col>
         </ion-row>
+
+        <ion-infinite-scroll (ionInfinite)="$event.waitFor(loadMoreSearchResult($event))">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
     </ion-grid>
 </ion-content>

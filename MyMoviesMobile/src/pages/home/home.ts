@@ -19,6 +19,7 @@ import { MovieBasePage } from '../base/moviebasepage';
 export class HomePage extends MovieBasePage {
   movies: Array<Movie> = [];
   newSlides: Slide[] = [];
+  randomSlides: Slide[] = [];
 
   page: number = 0;
   appReady: boolean = false;
@@ -40,6 +41,10 @@ export class HomePage extends MovieBasePage {
           this.newSlides = slides;
           this.page += 1;
         });
+
+        this.slideService.getRandomSlides().then(slides => {
+          this.randomSlides = slides;
+        });
       });
     });
   }
@@ -57,6 +62,12 @@ export class HomePage extends MovieBasePage {
       this.slideService.getNewSlides(this.page).then(slides => {
         Array.prototype.push.apply(this.newSlides, slides);
         this.page += 1;
+      });
+    }
+
+    if (this.appReady && type == 'random' && this.randomSlides.length <= this.settingService.SlideLimit) {
+      this.slideService.getRandomSlides().then(slides => {
+        Array.prototype.push.apply(this.randomSlides, slides);
       });
     }
   }

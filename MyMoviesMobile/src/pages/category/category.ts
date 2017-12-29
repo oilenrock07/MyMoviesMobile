@@ -18,6 +18,9 @@ export class CategoryPage extends MovieBasePage {
 
     private readonly _movieService: IMovieService;
     searchResult: Movie[] = [];
+    categoryType: string = '';
+    imageBgSize: string = 'contain';
+    page: number = 0;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private appService: AppService,
         private moviesService: MovieService, private movieMockService: MovieMockService) {
@@ -31,8 +34,23 @@ export class CategoryPage extends MovieBasePage {
     }
 
     loadMovies(type: string) {
-        this._movieService.searchMoviesByCategory(type).then(result => {
+        this.categoryType = type;
+        this.page = 0;
+        this._movieService.searchMoviesByCategory(type, this.page).then(result => {
             this.searchResult = result;
+            this.page += 1;
+        });
+    }
+
+    loadMoreSearchResult(infiniteScroll) {
+        this._movieService.searchMovies(this.categoryType, this.page).then(result => {
+            if (result) {
+                for (let movie of result) {
+                    this.searchResult.push(movie);
+                }
+                this.page += 1;
+            }
+            infiniteScroll.complete();
         });
     }
 }

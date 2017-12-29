@@ -160,6 +160,12 @@ export class MovieMockService implements IMovieService {
         });
     }
 
+    loadRandomMovies(): Promise<Movie[]> {
+        return new Promise((resolve, reject) => {
+            resolve(this.mapMovie(this.movies));
+        });
+    }
+
     loadRelatedMovies(imdbIds: string): Promise<Movie[]> {
         return new Promise((resolve, reject) => {
 
@@ -180,7 +186,7 @@ export class MovieMockService implements IMovieService {
         });
     }
 
-    searchMovies(criteria: string): Promise<Movie[]> {
+    searchMovies(criteria: string, page: number): Promise<Movie[]> {
         return new Promise((resolve, reject) => {
             var lowerCriteria = criteria.toLowerCase();
             var result = this.movies.filter(x => x.Title.toLowerCase().indexOf(lowerCriteria) >= 0);
@@ -188,7 +194,7 @@ export class MovieMockService implements IMovieService {
         });
     }
 
-    searchMoviesByCategory(criteria: string) : Promise<Movie[]> {
+    searchMoviesByCategory(criteria: string, page: number) : Promise<Movie[]> {
         return new Promise((resolve, reject) => {
             var lowerCriteria = criteria.toLowerCase();
             var result = this.movies.filter(x => x.Genre.toLowerCase().indexOf(lowerCriteria) >= 0);

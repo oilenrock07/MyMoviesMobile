@@ -23,14 +23,16 @@ export class SlideService {
         });
     }
 
-    getRelatedMovies(imdbIds: string): Promise<Slide[]> {
-        return this._movieService.loadRelatedMovies(imdbIds).then((movies) => {
+    getRandomSlides(): Promise<Slide[]> {
+        return this._movieService.loadRandomMovies().then((movies) => {
             return this.prepareSlide(movies);
         });
     }
 
-    getRandomMovieSlides() {
-
+    getRelatedMovies(imdbIds: string): Promise<Slide[]> {
+        return this._movieService.loadRelatedMovies(imdbIds).then((movies) => {
+            return this.prepareSlide(movies);
+        });
     }
 
     //Arrange the movie on each slides.

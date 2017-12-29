@@ -14,7 +14,7 @@ export class DataService {
     connect(): Promise<any> {       
         var self = this;
         return new Promise((resolve, reject) => {
-            if (this.isConnected) return;
+            if (this.isConnected) return resolve(self.db);
             if (!this.appService.isApp) resolve();
             window['sqlitePlugin'].openDatabase(
                 {

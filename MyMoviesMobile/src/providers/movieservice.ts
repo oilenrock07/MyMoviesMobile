@@ -20,6 +20,13 @@ export class MovieService implements IMovieService {
             .then(resultSet => this.mapMovie(resultSet));
     }
 
+    loadRandomMovies(): Promise<Movie[]> {
+        var max = this.settingService.MaximumMovieRequest;
+        var query = "SELECT * FROM Movies ORDER BY RANDOM() LIMIT ?";
+        return this.dataService.executeSql(query, [max])
+            .then(resultSet => this.mapMovie(resultSet));
+    }
+
     loadRelatedMovies(imdbIds: string): Promise<Movie[]> {
         var formattedParameter = "'" + imdbIds + "'";
         if (formattedParameter.indexOf(',') > 0)
@@ -30,17 +37,24 @@ export class MovieService implements IMovieService {
             .then(resultSet => this.mapMovie(resultSet));
     }
 
-    searchMovies(criteria: string): Promise<Movie[]> {
+    searchMovies(criteria: string, page: number): Promise<Movie[]> {
         criteria = "'%" + criteria + "%'";
         var query = `SELECT DISTINCT * FROM Movies WHERE Title LIKE ${criteria} OR Directors LIKE ${criteria} OR Writers LIKE ${criteria} OR Stars LIKE ${criteria} OR Genre LIKE ${criteria} ` +
-            `OR AlsoKnownAs LIKE ${criteria} OR FileName LIKE ${criteria}`;
+            `OR AlsoKnownAs LIKE ${criteria} OR FileName LIKE ${criteria} ORDER BY MovieId DESC LIMIT ? OFFSET ?`;
 
-        return this.dataService.executeSql(query, [])
+        var max = this.settingService.MaximumMovieRequest;
+        var offset = page * max;
+        return this.dataService.executeSql(query, [max, offset])
             .then(resultSet => this.mapMovie(resultSet));
     }
 
-    searchMoviesByCategory(criteria: string) : Promise<Movie[]> {
-        return null;
+    searchMoviesByCategory(criteria: string, page: number) : Promise<Movie[]> {
+        var query = `SELECT DISTINCT * FROM Movies WHERE Genre LIKE '%${criteria}%' ORDER BY MovieId DESC LIMIT ? OFFSET ?`;
+
+        var max = this.settingService.MaximumMovieRequest;
+        var offset = page * max;
+        return this.dataService.executeSql(query, [max, offset])
+            .then(resultSet => this.mapMovie(resultSet));
     }
 
     // addToWatchList(movieId: number) : Promise {
