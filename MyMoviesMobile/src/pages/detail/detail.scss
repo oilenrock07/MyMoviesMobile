@@ -3,6 +3,8 @@
     width: 100%;
 }
 .title{
+    color:$title-color;
+    font-weight: bolder;
     font-size: 25px;
 }       
 .container {
@@ -14,4 +16,17 @@
 }
 .spacer{
     margin-bottom: 10px;
+}
+
+.content{
+    font-weight: lighter;
+}
+
+mov-star-rating {
+    color:#ffbe1e;
+}
+
+div span {
+    color:$title-color;    
+    font-weight: bolder;
 }

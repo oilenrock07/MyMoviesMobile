@@ -15,6 +15,9 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+$bg-color: #191919;
+$title-color: #929292;
+
 .nav-search {
     background-color: inherit;
     font-size: larger;
@@ -25,6 +28,35 @@
     height: auto;    
 }
 
+body {
+    background-color: $bg-color;
+}
+
+.toolbar-title {
+    color:white;
+}
+.nav-search{
+    color:white;
+}
+.bar-button-default{
+    color:white;
+}
+.toolbar-background {
+    background-color: $bg-color;
+}
+.content{
+    color:white;
+    background-color: $bg-color;
+}
+
+.item-divider {
+    color: $title-color;
+    background-color: $bg-color;
+}
+.item-block {
+    color:white;
+    background-color: $bg-color;
+}
 // .list button div.item-inner {
 //     padding-left: 30px !important; 
 // }

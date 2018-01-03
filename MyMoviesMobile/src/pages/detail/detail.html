@@ -28,23 +28,23 @@
                 <div class="rate" *ngIf="!showStarRating" (tap)="showStarRating=!showStarRating">{{movie.Rate}}</div>
                 <div class="sumary">{{movie.Summary}}</div>
 
-                <div class="stars">Stars: {{movie.formatText(movie.Stars)}}</div>
-                <div class="directors" *ngIf="movie.Directors != ''">Directors: {{movie.formatText(movie.Directors)}}</div>
-                <div class="writers" *ngIf="movie.Writers != ''">Writers: {{movie.formatText(movie.Writers)}}</div>
+                <div class="stars"><span>Stars:</span> {{movie.formatText(movie.Stars)}}</div>
+                <div class="directors" *ngIf="movie.Directors != ''"><span>Directors:</span> {{movie.formatText(movie.Directors)}}</div>
+                <div class="writers" *ngIf="movie.Writers != ''"><span>Writers:</span> {{movie.formatText(movie.Writers)}}</div>
                 <div class="spacer"></div>
 
-                <div class="country" *ngIf="movie.Country != ''">Country: {{movie.Country}}</div>
-                <div class="language" *ngIf="movie.Language != ''">Language: {{movie.Language}}</div>
-                <div class="aka" *ngIf="movie.AlsoKnownAs != ''">Also Known As: {{movie.AlsoKnownAs}}</div>
-                <div class="budget" *ngIf="movie.Budget != ''">Budget: {{movie.Budget}}</div>
-                <div class="gross" *ngIf="movie.Gross != ''">Gross: {{movie.Gross}}</div>
+                <div class="country" *ngIf="movie.Country != ''"><span>Country:</span> {{movie.Country}}</div>
+                <div class="language" *ngIf="movie.Language != ''"><span>Language:</span> {{movie.Language}}</div>
+                <div class="aka" *ngIf="movie.AlsoKnownAs != ''"><span>Also Known As:</span> {{movie.AlsoKnownAs}}</div>
+                <div class="budget" *ngIf="movie.Budget != ''"><span>Budget:</span> {{movie.Budget}}</div>
+                <div class="gross" *ngIf="movie.Gross != ''"><span>Gross:</span> {{movie.Gross}}</div>
                 <div class="spacer"></div>
 
-                <div class="datecreated" *ngIf="movie.DateCreated != ''">Date Created: {{movie.DateCreated}}</div>
-                <div class="location" *ngIf="movie.Location != ''">Location: {{movie.Location}}</div>
-                <div class="remarks" *ngIf="movie.Remarks != ''">Remarks: {{movie.Remarks}}</div>
-                <div class="filename" *ngIf="movie.FileName != ''">File Name: {{movie.FileName}}</div>
-                <div class="filesize" *ngIf="movie.FileSize != ''">File Size: {{movie.FileSize}}</div>
+                <div class="datecreated" *ngIf="movie.DateCreated != ''"><span>Date Created:</span> {{movie.DateCreated}}</div>
+                <div class="location" *ngIf="movie.Location != ''"><span>Location:</span> {{movie.Location}}</div>
+                <div class="remarks" *ngIf="movie.Remarks != ''"><span>Remarks:</span> {{movie.Remarks}}</div>
+                <div class="filename" *ngIf="movie.FileName != ''"><span>File Name:</span> {{movie.FileName}}</div>
+                <div class="filesize" *ngIf="movie.FileSize != ''"><span>File Size:</span> {{movie.FileSize}}</div>
             </ion-col>
         </ion-row>
         <ion-row>
