@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { DataService } from '../providers/dataservice';
 import { HomePage } from '../pages/home/home';
+import { WatchListPage } from '../pages/watchlist/watchlist';
 import { CategoriesPage } from '../pages/categories/categories';
 
 @Component({
@@ -29,7 +30,7 @@ export class MyApp {
     this.menus = [
       { title: 'Home', component: HomePage, system: false },
       { title: 'Categories', component: CategoriesPage, system: false },
-      { title: 'Watchlist', component: HomePage, system: false },
+      { title: 'Watchlist', component: WatchListPage, system: false },
       { title: 'Data Updates', component: HomePage, system: true },
       { title: 'Settings', component: HomePage, system: true },
       { title: 'About', component: HomePage, system: true }

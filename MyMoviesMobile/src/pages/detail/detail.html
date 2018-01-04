@@ -6,8 +6,8 @@
         <ion-title>MyMovies</ion-title>
 
         <ion-buttons end>
-            <button (click)="searchToggle()" class="nav-search">
-            <ion-icon name="search" class="nav-search"></ion-icon>
+            <button (click)="searchToggle()" class="nav-button-right">
+            <ion-icon name="search" class="nav-button-right"></ion-icon>
           </button>
         </ion-buttons>
     </ion-navbar>
@@ -19,6 +19,11 @@
         <ion-row wrap>
             <ion-col col-12 col-sm-6 class="container">
                 <img-loader src="{{movie.Poster}}" title="{{movie.Title}}" backgroundSize="cover"></img-loader>
+                <ion-fab right top>
+                    <button ion-fab>
+                      <ion-icon name="bookmark"></ion-icon>
+                    </button>
+                  </ion-fab>
             </ion-col>
             <ion-col col-12 col-sm-6>
                 <div class="title">{{movie.Title}}</div>

@@ -26,7 +26,12 @@ mov-star-rating {
     color:#ffbe1e;
 }
 
+ion-icon[name=bookmark]{
+    color:white;
+}
+
 div span {
     color:$title-color;    
     font-weight: bolder;
 }
+

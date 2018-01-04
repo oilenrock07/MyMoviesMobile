@@ -11,6 +11,7 @@ import { MovieService } from '../providers/movieservice';
 import { DataService } from '../providers/dataservice';
 import { SettingService } from '../providers/settingservice';
 import { MovieMockService } from '../providers/moviemockservice';
+import { WatchListMockService } from '../providers/watchlistmockservice';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -18,8 +19,11 @@ import { SearchPage } from '../pages/search/search';
 import { DetailPage } from '../pages/detail/detail';
 import { CategoriesPage } from '../pages/categories/categories';
 import { CategoryPage } from '../pages/category/category';
+import { WatchListPage } from '../pages/watchlist/watchlist';
+import { ModalWatchListPage } from '../pages/watchlist/watchlist';
 
 import { IMovieService } from '../interfaces/imovieservice'
+import { IWatchListService } from '../interfaces/iwatchlistservice'
 
 import { StarRating } from '../components/starrating';
 import { RatingPipe } from '../pipes/ratingpipe';
@@ -33,6 +37,8 @@ import { CallbackPipe } from '../pipes/callbackpipe';
     DetailPage,
     CategoriesPage,
     CategoryPage,
+    WatchListPage,
+    ModalWatchListPage,
     StarRating,
     RatingPipe,
     CallbackPipe
@@ -49,7 +55,9 @@ import { CallbackPipe } from '../pipes/callbackpipe';
     SearchPage,
     DetailPage,
     CategoriesPage,
-    CategoryPage
+    CategoryPage,
+    WatchListPage,
+    ModalWatchListPage
   ],
   providers: [
     StatusBar,
@@ -60,6 +68,7 @@ import { CallbackPipe } from '../pipes/callbackpipe';
     SlideService,
     SettingService,
     MovieMockService,
+    WatchListMockService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

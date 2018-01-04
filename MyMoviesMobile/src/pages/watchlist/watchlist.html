@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>MyMovies</ion-title>
+
+        <ion-buttons end>
+            <button (click)="searchToggle()" class="nav-button-right">
+                <ion-icon name="search" class="nav-button-right"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item *ngFor="let wl of watchList">
+            <h2>{{wl.Name}}</h2>
+            <p>{{wl.Description}}</p>
+            <button ion-button clear item-end>Delete</button>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button color="danger" ion-fab (tap)="addWatchList()">
+            <span class="button-inner">
+                <ion-icon name="add" role="img" class="icon icon-md ion-md-add" aria-label="add"></ion-icon>
+            </span>
+        </button>
+    </ion-fab>
+</ion-content>
