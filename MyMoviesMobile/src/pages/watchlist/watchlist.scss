@@ -14,3 +14,11 @@ ion-icon[name=add] {
 .list-md .item-block .item-inner {
     border-bottom: 1px solid #484848;
   }
+
+  .input-wrapper .label-md-primary, .item-input .label-md-primary, .item-select .label-md-primary, .item-datetime .label-md-primary {
+      color: white;
+  }
+
+  ion-modal .button-inner {
+      color:white;
+  }

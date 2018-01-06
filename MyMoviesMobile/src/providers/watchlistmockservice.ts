@@ -19,11 +19,11 @@ export class WatchListMockService implements IWatchListService {
             WatchListId: 1,
             Name: 'Best Filipino Indie Movies',
             Description: 'Indies'
-        });        
+        });
     }
 
-    
-    loadWatchList() : Promise<WatchList[]> {
+
+    loadWatchList(): Promise<WatchList[]> {
         return new Promise((resolve, reject) => {
             // resolve(this.watchList.map(function(wl) {
             //     return new WatchList(wl.WatchListId, wl.Name, wl.Description);
@@ -32,9 +32,9 @@ export class WatchListMockService implements IWatchListService {
         });
     }
 
-    addAddWatchList(name: string, description: string) : Promise<number> {
-        return new Promise((resolve, reject) => {            
-            var newId = Math.max.apply(Math,this.watchList.map(function(o){return o.WatchListId;})) + 1;
+    addWatchList(name: string, description: string): Promise<number> {
+        return new Promise((resolve, reject) => {
+            var newId = Math.max.apply(Math, this.watchList.map(function (o) { return o.WatchListId; })) + 1;
             this.watchList.push({
                 WatchListId: newId,
                 Name: name,
@@ -42,6 +42,14 @@ export class WatchListMockService implements IWatchListService {
             });
 
             resolve(newId);
+        });
+    }
+
+    deleteWatchList(id: number) {
+        return new Promise((resolve, reject) => {
+            var removeIndex = this.watchList.map(function (item) { return item.WatchListId; }).indexOf(id);
+            this.watchList.splice(removeIndex, 1);
+            resolve();
         });
     }
 

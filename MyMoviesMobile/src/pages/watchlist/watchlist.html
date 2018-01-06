@@ -19,7 +19,7 @@
         <ion-item *ngFor="let wl of watchList">
             <h2>{{wl.Name}}</h2>
             <p>{{wl.Description}}</p>
-            <button ion-button clear item-end>Delete</button>
+            <button ion-button clear item-end (tap)="deleteWatchList(wl)">Delete</button>
         </ion-item>
     </ion-list>
 

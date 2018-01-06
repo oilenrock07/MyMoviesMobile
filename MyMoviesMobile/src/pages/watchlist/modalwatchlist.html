@@ -1,30 +1,28 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            Description
+            Add Watchlist
         </ion-title>
         <ion-buttons start>
             <button ion-button (click)="dismiss()">
-                <span ion-text color="primary">Cancel</span>
-                <ion-icon name="md-close"></ion-icon>
+                <span ion-text>Cancel</span>
             </button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-list>
-        <ion-item>
-            <ion-avatar item-start>
-                <img src="{{character.image}}">
-            </ion-avatar>
-            <h2>{{character.name}}</h2>
-            <p>{{character.quote}}</p>
-        </ion-item>
-        <ion-item *ngFor="let item of character['items']">
-            {{item.title}}
-            <ion-note item-end>
-                {{item.note}}
-            </ion-note>
-        </ion-item>
-    </ion-list>
+
+    <ion-item>
+        <ion-label color="primary" stacked>Name</ion-label>
+        <ion-input placeholder="Watchlist Name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary" stacked>Description</ion-label>
+        <ion-input placeholder="Description" [(ngModel)]="description"></ion-input>
+    </ion-item>
+
+    <div padding>
+        <button ion-button block (tap)="createWatchList()">Create Watchlist</button>
+    </div>
 </ion-content>
